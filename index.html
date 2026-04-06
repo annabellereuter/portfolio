@@ -24,6 +24,7 @@
     --white: #fafafa;
     --gray: #888;
     --border: #e0e0e0;
+    --side: 6rem;
   }
 
   html { scroll-behavior: smooth; }
@@ -37,9 +38,50 @@
     overflow-x: hidden;
   }
 
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem var(--side);
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    display: block;
+    height: 28px;
+    width: auto;
+  }
+
+  .nav-logo svg {
+    height: 28px;
+    width: auto;
+    display: block;
+  }
+
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+
+  .nav-links a {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--black);
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  .nav-links a:hover { opacity: 0.4; }
+
+  /* HERO */
   .hero {
-    padding: 6rem 3rem 4rem;
-    max-width: 900px;
+    padding: 10rem var(--side) 4rem;
+    max-width: 1100px;
   }
 
   .hero-label {
@@ -62,15 +104,56 @@
     margin-bottom: 0.5rem;
   }
 
-  .hero-name {
+  .hero-sub {
     font-family: 'AR2025', Georgia, serif;
-    font-size: 1.15rem;
+    font-size: 1.1rem;
     color: #444;
   }
 
-  .divider { height: 1px; background: var(--border); margin: 0 3rem; }
+  /* ÜBER MICH */
+  .about {
+    padding: 4rem var(--side);
+    border-top: 1px solid var(--border);
+    max-width: 1100px;
+  }
 
-  .works { padding: 5rem 3rem 7rem; }
+  .about-label {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: var(--gray);
+    margin-bottom: 1rem;
+  }
+
+  .about p {
+    font-family: 'AR2025', Georgia, serif;
+    font-size: 1.05rem;
+    color: #333;
+    max-width: 560px;
+    line-height: 1.8;
+  }
+
+  /* DIVIDER */
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 0 var(--side);
+  }
+
+  /* WORKS */
+  .works { padding: 5rem var(--side) 7rem; }
+
+  .works-label {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: var(--gray);
+    margin-bottom: 3rem;
+  }
 
   .grid {
     display: grid;
@@ -125,6 +208,25 @@
     color: var(--gray);
   }
 
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 1.5rem var(--side);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  footer span {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--gray);
+  }
+
+  /* LIGHTBOX */
   .lightbox {
     display: none;
     position: fixed;
@@ -162,23 +264,61 @@
   @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
 
   @media (max-width: 600px) {
-    .hero { padding: 4rem 1.5rem 3rem; }
-    .works { padding: 3rem 1.5rem 5rem; }
-    .divider { margin: 0 1.5rem; }
+    :root { --side: 1.5rem; }
+    nav { padding: 1.2rem var(--side); }
+    .hero { padding: 8rem var(--side) 3rem; }
+    .about { padding: 3rem var(--side); }
+    .works { padding: 3rem var(--side) 5rem; }
+    footer { padding: 1.5rem var(--side); flex-direction: column; gap: 0.5rem; align-items: flex-start; }
   }
 </style>
 </head>
 <body>
 
+<nav>
+  <a href="#" class="nav-logo">
+    <svg viewBox="0 0 418 181" xmlns="http://www.w3.org/2000/svg" style="height:28px;width:auto;fill:#111111;">
+      <g transform="matrix(1,0,0,1,-2482.426485,-457.587986)">
+        <g transform="matrix(1.634914,0,0,1,-1390.460571,-162.5)">
+          <g transform="matrix(0.912502,0,0,1.406142,2131.242117,-788.866664)">
+            <path d="M346.802,1081.764C346.802,1088.803 345.67,1095.226 343.406,1101.035C341.142,1106.845 338.062,1111.83 334.166,1115.991C330.27,1120.153 325.703,1123.378 320.465,1125.668C315.226,1127.959 309.606,1129.104 303.604,1129.104C297.655,1129.104 292.061,1127.931 286.823,1125.585C281.584,1123.239 277.004,1119.971 273.081,1115.782C269.159,1111.592 266.066,1106.607 263.802,1100.826C261.538,1095.045 260.406,1088.691 260.406,1081.764L260.406,1002L282.045,1002L282.045,1043.893C283.203,1042.329 284.611,1040.933 286.27,1039.704C287.928,1038.475 289.718,1037.47 291.64,1036.688C293.562,1035.905 295.549,1035.305 297.602,1034.886C299.656,1034.467 301.656,1034.258 303.604,1034.258C309.606,1034.258 315.226,1035.445 320.465,1037.819C325.703,1040.193 330.27,1043.502 334.166,1047.747C338.062,1051.992 341.142,1057.006 343.406,1062.787C345.67,1068.568 346.802,1074.894 346.802,1081.764ZM325.085,1081.764C325.085,1078.301 324.519,1075.076 323.387,1072.087C322.255,1069.099 320.715,1066.515 318.767,1064.337C316.819,1062.159 314.542,1060.455 311.936,1059.226C309.33,1057.997 306.552,1057.383 303.604,1057.383C300.656,1057.383 297.879,1058.067 295.273,1059.435C292.667,1060.804 290.389,1062.619 288.442,1064.882C286.494,1067.144 284.967,1069.741 283.861,1072.674C282.756,1075.606 282.203,1078.636 282.203,1081.764C282.203,1085.228 282.756,1088.439 283.861,1091.4C284.967,1094.36 286.494,1096.93 288.442,1099.108C290.389,1101.287 292.667,1103.004 295.273,1104.261C297.879,1105.518 300.656,1106.146 303.604,1106.146C306.552,1106.146 309.33,1105.518 311.936,1104.261C314.542,1103.004 316.819,1101.287 318.767,1099.108C320.715,1096.93 322.255,1094.36 323.387,1091.4C324.519,1088.439 325.085,1085.228 325.085,1081.764Z" style="fill-rule:nonzero;"/>
+          </g>
+        </g>
+        <g transform="matrix(1.634914,0,0,1,-1390.460571,-162.5)">
+          <g transform="matrix(0.626102,0,0,1.055118,2056.601818,-183.003668)">
+            <path d="M766,865.604L766,869.396C766,903.396 737.547,931 702.5,931C667.453,931 639,903.396 639,869.396L639,804L702.5,804C737.547,804 766,831.604 766,865.604ZM734.657,865.604C734.657,848.386 720.248,834.407 702.5,834.407L670.343,834.407L670.343,869.396C670.343,886.614 684.752,900.593 702.5,900.593C720.248,900.593 734.657,886.614 734.657,869.396L734.657,865.604Z"/>
+          </g>
+        </g>
+        <g transform="matrix(1.634914,0,0,1,-1390.460571,-162.5)">
+          <g transform="matrix(0.611653,0,0,1,848.644634,164.5)">
+            <path d="M2858.486,595L2897.917,595C2888.06,619.08 2864.932,636 2838,636C2802.126,636 2773,607.978 2773,571C2773,534.022 2802.126,502 2838,502C2873.874,502 2903,534.022 2903,571C2903,574.398 2902.754,577.737 2902.28,581L2806.975,581C2811.105,594.611 2823.441,602.5 2838,602.5C2845.763,602.5 2852.894,599.688 2858.486,595ZM2808.042,558L2867.958,558C2863.03,545.96 2851.466,535.5 2838,535.5C2824.534,535.5 2812.97,545.96 2808.042,558Z"/>
+          </g>
+        </g>
+      </g>
+    </svg>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">Über mich</a></li>
+    <li><a href="#works">Arbeiten</a></li>
+    <li><a href="mailto:annabelle.reuter@gmail.com">Kontakt</a></li>
+  </ul>
+</nav>
+
 <section class="hero">
   <p class="hero-label fade-in" style="animation-delay:0.05s">Illustration & Visuelle Kommunikation</p>
   <h1 class="fade-in" style="animation-delay:0.15s">Portfolio</h1>
-  <p class="hero-name fade-in" style="animation-delay:0.25s">Eine Auswahl meiner bisherigen Arbeiten.</p>
+  <p class="hero-sub fade-in" style="animation-delay:0.25s">Eine Auswahl meiner bisherigen Arbeiten.</p>
+</section>
+
+<section class="about" id="about">
+  <p class="about-label">Über mich</p>
+  <p>Mein visuelles Denken, gepaart mit meinem Studium im Sozialbereich und meinen Erfahrungen im Grafikdesign – daraus ist Boe entstanden.</p>
 </section>
 
 <div class="divider"></div>
 
-<section class="works">
+<section class="works" id="works">
+  <p class="works-label">Ausgewählte Arbeiten</p>
   <div class="grid">
     
     <div class="grid-item" style="grid-row:1; grid-column:1;" onclick="openLightbox(this)">
@@ -247,6 +387,11 @@
 
   </div>
 </section>
+
+<footer>
+  <span>© 2025 Boe – Annabelle Reuter</span>
+  <span>annabelle.reuter@gmail.com</span>
+</footer>
 
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
   <button class="lightbox-close" onclick="closeLightbox()">Schließen ✕</button>
