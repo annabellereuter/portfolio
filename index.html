@@ -24,7 +24,7 @@
     --white: #fafafa;
     --gray: #888;
     --border: #e0e0e0;
-    --side: 6rem;
+    --side: 7rem;
   }
 
   html { scroll-behavior: smooth; }
@@ -36,6 +36,9 @@
     font-weight: 400;
     line-height: 1.6;
     overflow-x: hidden;
+    max-width: 1050px;
+    width: 100%;
+    margin: 0 auto;
   }
 
   /* NAV */
@@ -44,7 +47,7 @@
     top: 0; left: 0; right: 0;
     z-index: 100;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     padding: 1.2rem var(--side);
     background: var(--white);
@@ -81,13 +84,15 @@
   /* HERO */
   .hero {
     padding: 10rem var(--side) 4rem;
-    max-width: 1100px;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
   }
 
   .hero-label {
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
-    font-size: 0.65rem;
+    font-size: 0.80rem;
     text-transform: uppercase;
     letter-spacing: 0.25em;
     color: var(--gray);
@@ -108,31 +113,6 @@
     font-family: 'AR2025', Georgia, serif;
     font-size: 1.1rem;
     color: #444;
-  }
-
-  /* ÜBER MICH */
-  .about {
-    padding: 4rem var(--side);
-    border-top: 1px solid var(--border);
-    max-width: 1100px;
-  }
-
-  .about-label {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700;
-    font-size: 0.65rem;
-    text-transform: uppercase;
-    letter-spacing: 0.25em;
-    color: var(--gray);
-    margin-bottom: 1rem;
-  }
-
-  .about p {
-    font-family: 'AR2025', Georgia, serif;
-    font-size: 1.05rem;
-    color: #333;
-    max-width: 560px;
-    line-height: 1.8;
   }
 
   /* DIVIDER */
@@ -158,7 +138,8 @@
   .grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+    column-gap: 3rem;
+    row-gap: 2rem;
   }
 
   @media (max-width: 700px) {
@@ -185,24 +166,23 @@
   .grid-item:hover img { transform: scale(1.02); }
 
   .grid-item-caption {
-    padding: 0.6rem 0 0;
+    padding: 0.35rem 0 0;
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
-    border-top: 1px solid var(--border);
-    margin-top: 0.6rem;
+    align-items: center;
+    margin-top: 0.35rem;
   }
 
   .caption-title {
     font-family: 'AR2025', Georgia, serif;
-    font-size: 0.85rem;
+    font-size: 1.3rem;
     color: var(--black);
   }
 
   .caption-year {
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
-    font-size: 0.6rem;
+    font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 0.15em;
     color: var(--gray);
@@ -210,11 +190,22 @@
 
   /* FOOTER */
   footer {
-    border-top: 1px solid var(--border);
+    position: relative;
     padding: 1.5rem var(--side);
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+
+  footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 100vw;
+    height: 1px;
+    background: var(--border);
+    transform: translateX(-50%);
   }
 
   footer span {
@@ -225,6 +216,18 @@
     letter-spacing: 0.15em;
     color: var(--gray);
   }
+
+  footer a {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--gray);
+    text-decoration: none;
+  }
+
+  footer a:hover { opacity: 0.4; }
 
   /* LIGHTBOX */
   .lightbox {
@@ -297,28 +300,14 @@
       </g>
     </svg>
   </a>
-  <ul class="nav-links">
-    <li><a href="#about">Über mich</a></li>
-    <li><a href="#works">Arbeiten</a></li>
-    <li><a href="mailto:annabelle.reuter@gmail.com">Kontakt</a></li>
-  </ul>
 </nav>
 
 <section class="hero">
   <p class="hero-label fade-in" style="animation-delay:0.05s">Illustration & Visuelle Kommunikation</p>
   <h1 class="fade-in" style="animation-delay:0.15s">Portfolio</h1>
-  <p class="hero-sub fade-in" style="animation-delay:0.25s">Eine Auswahl meiner bisherigen Arbeiten.</p>
 </section>
-
-<section class="about" id="about">
-  <p class="about-label">Über mich</p>
-  <p>Mein visuelles Denken, gepaart mit meinem Studium im Sozialbereich und meinen Erfahrungen im Grafikdesign – daraus ist Boe entstanden.</p>
-</section>
-
-<div class="divider"></div>
 
 <section class="works" id="works">
-  <p class="works-label">Ausgewählte Arbeiten</p>
   <div class="grid">
     
     <div class="grid-item" style="grid-row:1; grid-column:1;" onclick="openLightbox(this)">
@@ -391,6 +380,7 @@
 <footer>
   <span>© 2025 Boe – Annabelle Reuter</span>
   <span>annabelle.reuter@gmail.com</span>
+  <a href="https://www.instagram.com/boe.design/" target="_blank" rel="noopener">Instagram</a>
 </footer>
 
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
